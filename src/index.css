@@ -5,9 +5,72 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  overscroll-behavior: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vmin;
+  height: 100vmin;
+  margin: auto;
+  outline: 5px solid white;
+  background: white;
+}
+
+.row {
+  display: flex;
+}
+
+.square {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12.5vmin;
+  height: 12.5vmin;
+}
+
+.row:nth-child(odd) .square:nth-child(odd) {
+  background-color: black;
+}
+
+.row:nth-child(even) .square:nth-child(even) {
+  background-color: black;
+}
+
+.tile {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  width: 8vmin;
+  height: 8vmin;
+  z-index: 2;
+}
+
+.debug {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+}
+
+.yellow {
+  background-color: yellow !important;
+}
+
+.Error {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
