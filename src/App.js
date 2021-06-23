@@ -8,7 +8,8 @@ import {
   Route,
 } from "react-router-dom";
 
-axios.defaults.baseURL = '/checkers/api/';
+// axios.defaults.baseURL = '/checkers/api/';
+axios.defaults.baseURL = '/api/';
 
 function App() {
   return (
