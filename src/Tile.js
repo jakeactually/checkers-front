@@ -7,7 +7,7 @@ export const Tile = ({ tileSize, offset, cell, mouse, current, setCurrent, path,
     </div>;
   }
 
-  const image = '/' + ['None','Red','Blue','RedQueen','BlueQueen'][cell.tag] + '.svg';
+  const image = '/checkers/' + ['None','Red','Blue','RedQueen','BlueQueen'][cell.tag] + '.svg';
 
   if (current && cell.x === current.x && cell.y === current.y) {
     return <div className={`square ${isOver ? 'yellow' : ''}`}>

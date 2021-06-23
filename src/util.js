@@ -5,7 +5,7 @@ let count = 0;
 export const makeConnect = (params, setSocketCount) => {
     const connect = () => {
         const socket = new WebSocket(
-            `ws://jakeactually.com:5000/api/State/${params.id}`
+            `wss://jakeactually.com/checkers/api/State/${params.id}`
         );
 
         socket.onmessage = ev => {
@@ -68,7 +68,7 @@ export const makeEnd = (current, path, offset, setBoard, setCurrent, setPath, se
     }
 
     try {
-        const res = await axios.post(`/api/Turn/${params.id}`, path);
+        const res = await axios.post(`Turn/${params.id}`, path);
         setBoard(res.data.board);
     } catch (exception) {
         addToast(exception.response.data, { appearance: 'error', autoDismiss: true });
