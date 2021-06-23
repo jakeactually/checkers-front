@@ -52,7 +52,6 @@ code {
   position: fixed;
   transform: translate(-50%, -50%);
   width: 8vmin;
-  height: 8vmin;
   z-index: 2;
 }
 
