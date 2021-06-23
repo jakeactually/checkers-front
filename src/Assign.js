@@ -8,7 +8,7 @@ export function Assign() {
 
     useEffect(() => {
         (async () => {
-        const res = await axios.get('/api/Index');
+        const res = await axios.get('Index');
         console.log(res.data);
         history.push(`/Room/${res.data}`);
         })();

@@ -5,7 +5,7 @@ let count = 0;
 export const makeConnect = (params, setSocketCount) => {
     const connect = () => {
         const socket = new WebSocket(
-            `ws://192.168.100.81:16742/api/State/${params.id}`
+            `ws://jakeactually.com:5000/api/State/${params.id}`
         );
 
         socket.onmessage = ev => {

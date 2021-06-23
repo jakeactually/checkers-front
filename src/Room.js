@@ -23,7 +23,7 @@ export function Room() {
 
   useEffect(() => {
     (async () => {
-      const res = await axios.get(`/api/Room/${params.id}`);
+      const res = await axios.get(`Room/${params.id}`);
       setBoard(res.data.board);
     })();
   }, [count]);

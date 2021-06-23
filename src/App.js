@@ -1,4 +1,5 @@
 import { ToastProvider } from 'react-toast-notifications';
+import axios from 'axios';
 import { Room } from './Room';
 import { Assign } from './Assign';
 import {
@@ -7,12 +8,11 @@ import {
   Route,
 } from "react-router-dom";
 
-// axios.defaults.baseURL = window.location.origin.replace('3000', '4000');
-// axios.defaults.withCredentials = true;
+axios.defaults.baseURL = '/checkers/api/';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/checkers">
       <ToastProvider>
         <div>
           <Switch>
