@@ -1,18 +1,18 @@
 export const Tile = ({ tileSize, offset, cell, mouse, current, setCurrent, path, setPath }) => {
   const isOver = path.some(o => current && cell.x === o.x && cell.y === o.y);
 
-  if (cell.isNone) {
+  if (cell.isNoPiece) {
     return <div
       className={`square ${isOver ? 'yellow' : ''}`}>
     </div>;
   }
 
-  const image = '/checkers/' + ['None','Red','Blue','RedQueen','BlueQueen'][cell.tag] + '.svg';
+  const image = [null, 'Red', 'Blue', 'RedQueen', 'BlueQueen'][cell.tag];
 
   if (current && cell.x === current.x && cell.y === current.y) {
     return <div className={`square ${isOver ? 'yellow' : ''}`}>
       <img
-        src={image}
+        src={image ? `/checkers/${image}.svg` : null}
         className="tile"
         draggable={false}
         style={{
@@ -32,7 +32,7 @@ export const Tile = ({ tileSize, offset, cell, mouse, current, setCurrent, path,
     className={`square ${isOver ? 'yellow' : ''}`}
     onMouseDown={start}
     onTouchStart={start}>
-    <img src={image} className="tile" style={{
+    <img src={image ? `/checkers/${image}.svg` : null} className="tile" style={{
       left: cell.x * tileSize + tileSize / 2 + offset.x,
       top: cell.y * tileSize + tileSize / 2 + offset.y,
     }}></img>
