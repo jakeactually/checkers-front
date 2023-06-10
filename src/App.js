@@ -1,11 +1,11 @@
-import { ToastProvider } from 'react-toast-notifications';
+import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import { Room } from './Room';
 import { Assign } from './Assign';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
+  Routes,
 } from "react-router-dom";
 
 // axios.defaults.baseURL = '/checkers/api/';
@@ -13,19 +13,12 @@ axios.defaults.baseURL = '/api/';
 
 function App() {
   return (
-    <Router basename="/checkers">
-      <ToastProvider>
-        <div>
-          <Switch>
-            <Route path="/Room/:id">
-              <Room />
-            </Route>
-            <Route path="/">
-              <Assign />
-            </Route>
-          </Switch>
-        </div>
-      </ToastProvider>
+    <Router>
+      <ToastContainer></ToastContainer>
+      <Routes>
+        <Route path="/Room/:id" element={<Room></Room>}></Route>
+        <Route path="/" element={<Assign></Assign>}></Route>
+      </Routes>
     </Router>
   );
 }

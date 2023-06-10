@@ -1,17 +1,16 @@
 
 import axios from 'axios';
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function Assign() {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        (async () => {
-        const res = await axios.get('Index');
-        console.log(res.data);
-        history.push(`/Room/${res.data}`);
-        })();
+        axios.get('Index').then(res => {
+            console.log(res.data);
+            navigate(`/Room/${res.data}`);
+        });
     }, []);
 
     return null;

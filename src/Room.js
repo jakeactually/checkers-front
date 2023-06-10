@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useRouteMatch } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from 'axios';
-import { useToasts } from 'react-toast-notifications';
 import { makeConnect, mouseMovement, tileAndOffset, makeEnd } from './util';
 import { Tile } from './Tile';
 
 export function Room() {
-  const { params } = useRouteMatch();
-  const { addToast } = useToasts();
+  const params = useParams();
   const [current, setCurrent] = useState(null);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [board, setBoard] = useState(null);
@@ -53,7 +51,7 @@ export function Room() {
   }
 
   const end = makeEnd(current, path, offset, setBoard,
-    setCurrent, setPath, setMouse, params, addToast);
+    setCurrent, setPath, setMouse, params);
 
   return (
     <div className="App" onTouchEnd={end} onMouseUp={end}>
@@ -64,7 +62,7 @@ export function Room() {
               key={x}
               tileSize={tileSize}
               offset={offset}
-              cell={{ ...cell, x, y }}
+              cell={{ name: cell, x, y }}
               mouse={mouse}
               current={current}
               setCurrent={setCurrent}

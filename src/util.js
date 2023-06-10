@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 let count = 0;
 
@@ -6,7 +7,7 @@ export const makeConnect = (params, setSocketCount) => {
     const connect = () => {
         const socket = new WebSocket(
             // `wss://jakeactually.com/checkers/api/State/${params.id}`
-            `ws://localhost:16742/api/State/${params.id}`
+            `ws://localhost:63234/api/State/${params.id}`
         );
 
         socket.onmessage = ev => {
@@ -72,10 +73,9 @@ export const makeEnd = (current, path, offset, setBoard, setCurrent, setPath, se
         const res = await axios.post(`Turn/${params.id}`, path);
         setBoard(res.data.board);
     } catch (exception) {
-        addToast(exception.response.data, { appearance: 'error', autoDismiss: true });
+        toast.error(exception.response.data, { theme: 'colored' });
     }
 
     setCurrent(null);
     setPath([]);
 };
- 
