@@ -7,7 +7,7 @@ export function Assign() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('Index').then(res => {
+        axios.get('/Index').then(res => {
             console.log(res.data);
             navigate(`/Room/${res.data}`);
         });

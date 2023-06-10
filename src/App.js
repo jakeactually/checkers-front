@@ -8,12 +8,11 @@ import {
   Routes,
 } from "react-router-dom";
 
-// axios.defaults.baseURL = '/checkers/api/';
-axios.defaults.baseURL = '/api/';
+axios.defaults.baseURL = '/checkers/api';
 
 function App() {
   return (
-    <Router>
+    <Router basename='/checkers'>
       <ToastContainer></ToastContainer>
       <Routes>
         <Route path="/Room/:id" element={<Room></Room>}></Route>

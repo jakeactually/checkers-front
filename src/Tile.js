@@ -12,7 +12,7 @@ export const Tile = ({ tileSize, offset, cell, mouse, current, setCurrent, path,
   if (current && cell.x === current.x && cell.y === current.y) {
     return <div className={`square ${isOver ? 'yellow' : ''}`}>
       <img
-        src={image ? `/${image}.svg` : null}
+        src={image ? `/checkers/${image}.svg` : null}
         className="tile"
         draggable={false}
         style={{
@@ -32,7 +32,7 @@ export const Tile = ({ tileSize, offset, cell, mouse, current, setCurrent, path,
     className={`square ${isOver ? 'yellow' : ''}`}
     onMouseDown={start}
     onTouchStart={start}>
-    <img src={image ? `/${image}.svg` : null} className="tile" style={{
+    <img src={image ? `/checkers/${image}.svg` : null} className="tile" style={{
       left: cell.x * tileSize + tileSize / 2 + offset.x,
       top: cell.y * tileSize + tileSize / 2 + offset.y,
     }}></img>
