@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import { makeConnect, mouseMovement, tileAndOffset, makeEnd } from './util';
+import { makeConnect, mouseMovement, tileAndOffset, makeEnd, Board, Position, Params } from './util';
 import { Tile } from './Tile';
 
 export function Room() {
-  const params = useParams();
-  const [current, setCurrent] = useState(null);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const [board, setBoard] = useState(null);
-  const [path, setPath] = useState([]);
+  const params = useParams() as unknown as Params;
+  const [current, setCurrent] = useState<Position | null>(null);
+  const [mouse, setMouse] = useState<Position>({ x: 0, y: 0 });
+  const [board, setBoard] = useState<Board | null>(null);
+  const [path, setPath] = useState<Position[]>([]);
   const [count, setSocketCount] = useState(0);
   const [{ connect }] = useState({ connect: makeConnect(params, setSocketCount) });
   const { tileSize, offset } = tileAndOffset();
@@ -50,8 +50,7 @@ export function Room() {
     </div>;
   }
 
-  const end = makeEnd(current, path, offset, setBoard,
-    setCurrent, setPath, setMouse, params);
+  const end = makeEnd(current, path, setBoard, setCurrent, setPath, params);
 
   return (
     <div className="App" onTouchEnd={end} onMouseUp={end}>
@@ -62,7 +61,7 @@ export function Room() {
               key={x}
               tileSize={tileSize}
               offset={offset}
-              cell={{ name: cell, x, y }}
+              cell={{ name: cell, x, y, isNoPiece: cell === 'NoPiece' }}
               mouse={mouse}
               current={current}
               setCurrent={setCurrent}
