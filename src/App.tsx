@@ -6,7 +6,7 @@ import { Assign } from "./Assign.tsx";
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/checkers/api';
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter(
@@ -20,7 +20,7 @@ const router = createBrowserRouter(
       element: <Room />,
     },
   ],
-  { basename: '/' }
+  { basename: '/checkers' }
 );
 
 function App() {

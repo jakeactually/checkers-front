@@ -14,7 +14,7 @@ export const Tile: React.FC<TileProps> = ({ tileSize, offset, cell, mouse, curre
   if (current && cell.x === current.x && cell.y === current.y) {
     return <div className={`square ${isOver ? 'yellow' : ''}`}>
       <img
-        src={image ? `/${image}.svg` : ''}
+        src={image ? `/checkers/${image}.svg` : ''}
         className="tile"
         draggable={false}
         style={{
@@ -34,7 +34,7 @@ export const Tile: React.FC<TileProps> = ({ tileSize, offset, cell, mouse, curre
     className={`square ${isOver ? 'yellow' : ''}`}
     onMouseDown={start}
     onTouchStart={start}>
-    <img src={image ? `/${image}.svg` : ''} className="tile" style={{
+    <img src={image ? `/checkers/${image}.svg` : ''} className="tile" style={{
       left: cell.x * tileSize + tileSize / 2 + offset.x,
       top: cell.y * tileSize + tileSize / 2 + offset.y,
     }}></img>

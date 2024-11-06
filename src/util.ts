@@ -48,8 +48,8 @@ export interface TileProps {
 export const makeConnect = (params: Params, setSocketCount: (_: number) => void) => {
     const connect = () => {
         const socket = new WebSocket(
-            // `wss://jakeactually.com/checkers/api/State/${params.id}`
-             `ws://localhost:5125/api/State/${params.id}`
+            `wss://${location.host}/checkers/api/State/${params.id}`
+            // `ws://localhost:5125/api/State/${params.id}`
         );
 
         socket.onmessage = ev => {
